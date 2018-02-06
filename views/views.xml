@@ -1,0 +1,162 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="itd_docente_list">
+      <field name="name">LISTA DOCENTE</field>
+      <field name="model">itd.docente</field>
+      <field name="priority">0</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="apellido"/>
+          <field name="email"/>
+          <field name="phone"/>
+          <field name="movil"/>
+          <field name="dni"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="itd_docente_form">
+      <field name="name">Docente</field>
+      <field name="model">itd.docente</field>
+      <field name="priority">3</field>
+      <field name="arch" type="xml">
+          <form>
+              <group>
+                  <field name="nombre"/>
+                  <field name="apellido"/>
+                  <field name="email"/>
+                  <field name="phone"/>
+                  <field name="movil"/>
+                  <field name="direccion"/>
+                  <field name="dni"/>
+              </group>
+              <group>
+                  <field name="id_curso"/>
+              </group>
+          </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="itd_alumno_list">
+      <field name="name">LISTA ALUMNO</field>
+      <field name="model">itd.alumno</field>
+      <field name="priority">1</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="apellido"/>
+          <field name="email"/>
+          <field name="phone"/>
+          <field name="movil"/>
+          <field name="direccion"/>
+          <field name="dni"/>
+          <field name="nacimiento"/>
+          <field name="estado"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="itd_curso_list">
+      <field name="name">LISTA CURSO</field>
+      <field name="model">itd.curso</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="descripcion"/>
+          <field name="tiempo"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="itd_nota_list">
+      <field name="name">LISTA NOTA</field>
+      <field name="model">itd.nota</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="pra1"/>
+          <field name="pra2"/>
+          <field name="par"/>
+          <field name="fin"/>
+          <field name="pp"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="itd_alumno_form">
+      <field name="name">LISTA ALUMNO</field>
+      <field name="model">itd.alumno</field>
+      <field name="arch" type="xml">
+          <form>
+              <group>
+                  <field name="nombre"/>
+                  <field name="apellido"/>
+                  <field name="email"/>
+                  <field name="phone"/>
+                  <field name="movil"/>
+                  <field name="direccion"/>
+                  <field name="dni"/>
+                  <field name="nacimiento"/>
+                  <field name="estado"/>
+              </group>
+          </form>
+      </field>
+    </record>
+
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="accion_itd_docente_list">
+      <field name="name">LISTA DOCENTE</field>
+      <field name="res_model">itd.docente</field>
+      <field name="view_mode">tree,form,search</field>
+      <field name="view_id" ref="itd_docente_list"/>
+    </record>
+
+    <record model="ir.actions.act_window" id="accion_itd_alumno_list">
+      <field name="name">LISTA ALUMNO</field>
+      <field name="res_model">itd.alumno</field>
+      <field name="view_mode">tree,form,search</field>
+      <field name="view_id" ref="itd_alumno_list"/>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="gestion_academica.action_server">
+      <field name="name">GestionAcademica server</field>
+      <field name="model_id" ref="model_gestion_academica_gestion_academica"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="GestionAcademica" id="gestion_academica.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="gestion_academica.menu_1" parent="gestion_academica.menu_root"/>
+    <menuitem name="Menu 2" id="gestion_academica.menu_2" parent="gestion_academica.menu_root"/>
+    -->
+    <!-- actions -->
+
+    <menuitem name="listado" id="root" parent=""/>
+    <menuitem name="Docente" id="root_1" parent="root"
+              action="accion_itd_docente_list"/>
+    <menuitem name="Alumno" id="root_2" parent="root"
+              action="accion_itd_alumno_list"/>
+
+
+
+  </data>
+</odoo>
